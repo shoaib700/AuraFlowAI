@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import createSEOPage from '@/lib/createSEOPage';
+import createSEOPage from "@/lib/createSEOPage";
 
 export async function GET() {
   const keywords = [
@@ -9,8 +9,9 @@ export async function GET() {
   ];
 
   const pages = [];
+
   for (const kw of keywords) {
-    const url = await createSEOPage(kw);
+    const url = await createSEOPage(kw, kw, `Auto SEO page for ${kw}`);
     pages.push(url);
   }
 

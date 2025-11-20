@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
-import { createAffiliatePage } from "@/lib/createAffiliatePage";
+import createAffiliatePage from '@/lib/createAffiliatePage';
+import getBaseUrl from '@/lib/getBaseUrl';
 
 export async function GET() {
   const products = [
