@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createSEOPage } from "@/lib/createSEOPage";
+import createSEOPage from '@/lib/createSEOPage';
 
 export async function GET() {
   const keywords = [
