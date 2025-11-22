@@ -1,29 +1,50 @@
-// app/seo/[slug]/page.js
-import SEOPage from "@/models/SEOPage";
-import db from "@/lib/db";
+import AdSense from "@/components/AdSense";
 
-export default async function SEOPageDisplay({ params }) {
-  await db.connect();
-  const page = await SEOPage.findOne({ slug: params.slug });
+export default async function SEOPage({ params }) {
+  const { slug } = params;
 
-  if (!page) return <div>SEO page not found</div>;
+  // Fetch SEO page data from backend API
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/seo/${slug}`,
+    { cache: "no-store" }
+  );
+
+  if (!res.ok) {
+    return (
+      <div className="p-10 text-red-500">
+        Failed to load SEO Page. Please try again later.
+      </div>
+    );
+  }
+
+  const page = await res.json();
 
   return (
-    <div style={{ padding: "25px" }}>
-      <h1>{page.title}</h1>
-      <p>{page.content}</p>
+    <div className="max-w-4xl mx-auto p-5">
+      
+      {/* Top Ad */}
+      <AdSense />
 
-      {/* SEO Page Ad Block */}
-      <div style={{ marginTop: "40px" }}>
-        <ins
-          className="adsbygoogle"
-          style={{ display: "block" }}
-          data-ad-client="ca-pub-2203546185229559"
-          data-ad-slot="7654321000"
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-        ></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({})</script>
+      {/* Page Title */}
+      <h1 className="text-4xl font-bold mb-4">{page.title}</h1>
+
+      {/* Description or subtitle */}
+      {page.description && (
+        <p className="text-gray-600 mb-6">{page.description}</p>
+      )}
+
+      {/* Mid Ad */}
+      <AdSense />
+
+      {/* Main SEO content */}
+      <article
+        className="prose prose-lg mt-6"
+        dangerouslySetInnerHTML={{ __html: page.content }}
+      ></article>
+
+      {/* Bottom Ad */}
+      <div className="mt-10">
+        <AdSense />
       </div>
     </div>
   );

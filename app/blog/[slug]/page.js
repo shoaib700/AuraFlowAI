@@ -1,44 +1,44 @@
-// app/blog/[slug]/page.js
-import React from "react";
-import db from "@/lib/db";
-import Blog from "@/models/Blog";
+import AdSense from "@/components/AdSense";
 
 export default async function BlogPage({ params }) {
-  await db.connect();
-  const post = await Blog.findOne({ slug: params.slug });
+  const { slug } = params;
 
-  if (!post) {
-    return <div>Blog not found</div>;
+  // Fetch blog from backend API
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/blogs/${slug}`,
+    { cache: "no-store" }
+  );
+
+  if (!res.ok) {
+    return (
+      <div className="p-10 text-red-500">
+        Failed to load blog. Please try again later.
+      </div>
+    );
   }
 
+  const blog = await res.json();
+
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>{post.title}</h1>
-      <p>{post.content}</p>
+    <div className="max-w-4xl mx-auto p-5">
+      {/* Top Ad */}
+      <AdSense />
 
-      {/* Ad 1 - Banner */}
-      <div style={{ margin: "30px 0" }}>
-        <ins
-          className="adsbygoogle"
-          style={{ display: "block" }}
-          data-ad-client="ca-pub-2203546185229559"
-          data-ad-slot="1234567890"
-          data-ad-format="auto"
-          data-full-width-responsive="true"
-        ></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({})</script>
-      </div>
+      {/* Blog Title */}
+      <h1 className="text-4xl font-bold mb-4">{blog.title}</h1>
 
-      {/* Ad 2 - Rectangle */}
-      <div style={{ marginTop: "50px" }}>
-        <ins
-          className="adsbygoogle"
-          style={{ display: "block" }}
-          data-ad-client="ca-pub-2203546185229559"
-          data-ad-slot="9876543210"
-          data-ad-format="auto"
-        ></ins>
-        <script>(adsbygoogle = window.adsbygoogle || []).push({})</script>
+      {/* Mid Ad */}
+      <AdSense />
+
+      {/* Blog Content */}
+      <article
+        className="prose prose-lg mt-6"
+        dangerouslySetInnerHTML={{ __html: blog.content }}
+      ></article>
+
+      {/* Bottom Ad */}
+      <div className="mt-10">
+        <AdSense />
       </div>
     </div>
   );

@@ -1,41 +1,31 @@
-import DashboardStats from "../components/DashboardStats";
+"use client";
 
-export default function Dashboard() {
+import { useState } from "react";
+
+export default function DashboardPage() {
+  const [status, setStatus] = useState("");
+
+  async function runAutopilot() {
+    setStatus("Running...");
+    try {
+      const res = await fetch(
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/autopilot/run`
+      );
+
+      const data = await res.json();
+      setStatus(data.message || "Autopilot complete.");
+    } catch (err) {
+      setStatus("Error running autopilot.");
+    }
+  }
+
   return (
-    <div className="space-y-6">
-      <h1 className="text-3xl font-semibold">System Analytics</h1>
+    <div>
+      <h1>AuraFlow AI Dashboard</h1>
 
-      <DashboardStats />
+      <button onClick={runAutopilot}>Run Autopilot</button>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-        <div className="bg-white p-5 rounded shadow">
-          <h2 className="text-xl font-bold">Traffic</h2>
-          <p className="text-gray-700 mt-2">
-            Autopilot engine increasing traffic automatically...
-          </p>
-        </div>
-
-        <div className="bg-white p-5 rounded shadow">
-          <h2 className="text-xl font-bold">Affiliate Earnings</h2>
-          <p className="text-gray-700 mt-2">
-            Auto-optimized links generating revenue...
-          </p>
-        </div>
-
-        <div className="bg-white p-5 rounded shadow">
-          <h2 className="text-xl font-bold">SEO Pages</h2>
-          <p className="text-gray-700 mt-2">
-            SEO builder creating high-rank pages...
-          </p>
-        </div>
-
-        <div className="bg-white p-5 rounded shadow">
-          <h2 className="text-xl font-bold">System Health</h2>
-          <p className="text-gray-700 mt-2">
-            All systems running smoothly.
-          </p>
-        </div>
-      </div>
+      <p>{status}</p>
     </div>
   );
 }
