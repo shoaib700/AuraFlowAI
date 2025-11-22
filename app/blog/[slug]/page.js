@@ -1,66 +1,44 @@
-export default async function BlogPost({ params }) {
-  const res = await fetch(
-    `http://localhost:4000/api/content/blog/${params.slug}`
-  );
-  const post = await res.json();
+// app/blog/[slug]/page.js
+import React from "react";
+import db from "@/lib/db";
+import Blog from "@/models/Blog";
+
+export default async function BlogPage({ params }) {
+  await db.connect();
+  const post = await Blog.findOne({ slug: params.slug });
+
+  if (!post) {
+    return <div>Blog not found</div>;
+  }
 
   return (
-    <div>
+    <div style={{ padding: "20px" }}>
       <h1>{post.title}</h1>
+      <p>{post.content}</p>
 
-      {/* Ad Under Title */}
-      <div style={{ textAlign: "center", margin: "20px 0" }}>
-        <ins className="adsbygoogle"
+      {/* Ad 1 - Banner */}
+      <div style={{ margin: "30px 0" }}>
+        <ins
+          className="adsbygoogle"
           style={{ display: "block" }}
           data-ad-client="ca-pub-2203546185229559"
-          data-ad-slot="7777777777"
+          data-ad-slot="1234567890"
           data-ad-format="auto"
-          data-full-width-responsive="true">
-        </ins>
-        <script dangerouslySetInnerHTML={{ __html: `
-          (adsbygoogle = window.adsbygoogle || []).push({});
-        ` }}></script>
+          data-full-width-responsive="true"
+        ></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({})</script>
       </div>
 
-      <p style={{ opacity: 0.7 }}>{post.date}</p>
-
-      {/* Content with ads inserted every 3rd paragraph */}
-      <div>
-        {post.content.split("</p>").map((chunk, i) => (
-          <div key={i}>
-            <p dangerouslySetInnerHTML={{ __html: chunk }} />
-
-            {/* Insert ad after every 3 paragraphs */}
-            {(i + 1) % 3 === 0 && (
-              <div style={{ textAlign: "center", margin: "25px 0" }}>
-                <ins className="adsbygoogle"
-                  style={{ display: "block" }}
-                  data-ad-client="ca-pub-2203546185229559"
-                  data-ad-slot="8888888888"
-                  data-ad-format="auto"
-                  data-full-width-responsive="true">
-                </ins>
-                <script dangerouslySetInnerHTML={{ __html: `
-                  (adsbygoogle = window.adsbygoogle || []).push({});
-                ` }}></script>
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-
-      {/* Final Ad Block */}
-      <div style={{ textAlign: "center", margin: "40px 0" }}>
-        <ins className="adsbygoogle"
+      {/* Ad 2 - Rectangle */}
+      <div style={{ marginTop: "50px" }}>
+        <ins
+          className="adsbygoogle"
           style={{ display: "block" }}
           data-ad-client="ca-pub-2203546185229559"
-          data-ad-slot="9999999999"
+          data-ad-slot="9876543210"
           data-ad-format="auto"
-          data-full-width-responsive="true">
-        </ins>
-        <script dangerouslySetInnerHTML={{ __html: `
-          (adsbygoogle = window.adsbygoogle || []).push({});
-        ` }}></script>
+        ></ins>
+        <script>(adsbygoogle = window.adsbygoogle || []).push({})</script>
       </div>
     </div>
   );
