@@ -1,12 +1,9 @@
-// app/layout.js
-"use client";
-
 import "./globals.css";
 import Script from "next/script";
 
 export const metadata = {
   title: "AuraFlow AI",
-  description: "Automated business autopilot engine",
+  description: "Automated business autopilot engine.",
 };
 
 export default function RootLayout({ children }) {
@@ -15,13 +12,27 @@ export default function RootLayout({ children }) {
       <head>
         {/* Google AdSense */}
         <Script
+          id="adsense-init"
           async
-          strategy="afterInteractive"
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203546185229559"
           crossOrigin="anonymous"
         />
-      </head>
 
+        {/* Google Analytics */}
+        <Script
+          id="ga-loader"
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+        />
+        <Script id="ga-init">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+          `}
+        </Script>
+      </head>
       <body>{children}</body>
     </html>
   );
