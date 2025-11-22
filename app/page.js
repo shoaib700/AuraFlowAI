@@ -1,31 +1,50 @@
-import AutopilotCard from "./components/AutopilotCard";
-
 export default function Home() {
   return (
-    <div className="space-y-8">
-      <h1 className="text-3xl font-bold">AuraFlow AI Dashboard</h1>
-      <p className="text-gray-700">
-        Your AI-powered automation engine is fully operational.
-        All earnings modules and autopilot functions are active.
+    <div>
+      <h1>AuraFlow AI — Automatic Income Engine</h1>
+      <p>
+        Fully automated SEO, affiliate, and traffic generation system.
+        Everything runs on its own.
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <AutopilotCard
-          title="Autopilot Engine"
-          description="Runs automated tasks, growth, and traffic engine."
-          endpoint="/api/autopilot"
-        />
-        <AutopilotCard
-          title="Affiliate Engine"
-          description="Monetizes Amazon, eBay, AliExpress, Temu links automatically."
-          endpoint="/api/affiliate"
-        />
-        <AutopilotCard
-          title="SEO Builder"
-          description="Generates automatic SEO pages & traffic growth."
-          endpoint="/api/seo"
-        />
-      </div>
+      <section>
+        <h2>Autopilot Engine</h2>
+        <p>Runs full automation: SEO + affiliate + pages.</p>
+        <button
+          onClick={() => fetch("/api/run")}
+          style={{
+            padding: "10px 20px",
+            background: "black",
+            color: "white",
+            borderRadius: "5px",
+          }}
+        >
+          Run Autopilot
+        </button>
+      </section>
+
+      <hr />
+
+      <section>
+        <h2>Top Deals</h2>
+        <p>Automatically updated Amazon, Temu, and eBay offers.</p>
+        <a href="/deals/amazon">View Amazon Deals →</a>
+      </section>
+
+      <hr />
+
+      <section>
+        <h2>Trending Now</h2>
+        <p>What people are searching today.</p>
+        <a href="/trending">View Trending →</a>
+      </section>
+
+      <hr />
+
+      <section>
+        <h2>Latest Blog Posts</h2>
+        <a href="/blog">View Blog →</a>
+      </section>
     </div>
   );
 }

@@ -1,19 +1,14 @@
-export async function runAffiliate() {
-  const sources = ["Amazon", "eBay", "AliExpress", "Temu"];
-  const selected = sources[Math.floor(Math.random() * sources.length)];
+import axios from "axios";
 
-  const actions = [
-    "Optimized affiliate links.",
-    "Found high-conversion products.",
-    "Auto-rotated commission sources.",
-    "Updated tracking parameters.",
-    "Injected dynamic CTAs."
-  ];
+export async function runAmazonAffiliateEngine(keyword) {
+  const trackingId = "auraflowai-20";
+  const amazonBase = "https://www.amazon.com/s";
 
-  const action = actions[Math.floor(Math.random() * actions.length)];
+  const url = `${amazonBase}?k=${encodeURIComponent(keyword)}&tag=${trackingId}`;
 
   return {
-    status: "success",
-    message: `Affiliate Engine • ${selected}: ${action}`
+    success: true,
+    keyword,
+    affiliateUrl: url
   };
 }
