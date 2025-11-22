@@ -1,8 +1,7 @@
-import mongoose from "mongoose";
-
-const LogSchema = new mongoose.Schema({
-  message: String,
-  createdAt: { type: Date, default: Date.now }
-});
-
-export default mongoose.models.Log || mongoose.model("Log", LogSchema);
+export const logs = [
+  {
+    timestamp: "2025-01-01T00:00:00Z",
+    affiliate: {},
+    seo: {}
+  }
+];

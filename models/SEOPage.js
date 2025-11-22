@@ -1,21 +1,20 @@
 export const seoPages = [
   {
-    slug: "best-online-income-methods",
-    title: "Best Online Income Methods in 2025",
-    description: "Top automated strategies for earning money online.",
-    keywords: ["income", "business", "automation"],
+    slug: "best-ai-income-methods",
+    title: "Best AI Income Methods",
+    description: "Find the most profitable AI earning systems for 2025.",
+    keywords: ["AI", "income", "automation", "online business"],
     content: `
-      <p>Here are the most profitable income models in 2025...</p>
-    `,
+      <p>AI business autopilot systems are now the top earning method in 2025...</p>
+    `
   },
-
   {
-    slug: "ai-autopilot-earning-system",
-    title: "AI Autopilot Earning System",
-    description: "How autopilot engines generate daily income.",
-    keywords: ["AI", "autopilot", "earnings"],
+    slug: "ai-traffic-growth",
+    title: "AI Traffic Growth Hacks",
+    description: "How AI grows organic traffic automatically.",
+    keywords: ["SEO", "growth", "AI", "traffic"],
     content: `
-      <p>This is how your AI system grows traffic and makes money automatically...</p>
-    `,
-  },
+      <p>SEO autopilot builds and ranks traffic pages without manual effort...</p>
+    `
+  }
 ];
