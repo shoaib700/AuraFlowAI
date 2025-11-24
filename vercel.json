@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "name": "auraflow-ai",
+  "builds": [
+    {
+      "src": "next.config.js",
+      "use": "@vercel/next"
+    }
+  ],
+  "routes": [
+    { "src": "/sitemap.xml", "dest": "/sitemap.xml" },
+    { "src": "/robots.txt", "dest": "/robots.txt" }
+  ]
+}

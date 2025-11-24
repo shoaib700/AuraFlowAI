@@ -1,0 +1,215 @@
+/* styles/modern.css */
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+  background: #f3f4f6;
+  margin: 0;
+  padding: 0;
+  color: #111827;
+}
+
+/* Layout */
+
+.layoutWrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 240px;
+  background: #111827;
+  color: #fff;
+  padding: 20px;
+}
+
+.sidebarTitle {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.sidebarMenu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebarMenu li {
+  margin-bottom: 15px;
+}
+
+.sidebarMenu a {
+  color: #d1d5db;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.sidebarMenu a:hover {
+  color: #ffffff;
+}
+
+.mainContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.navbar {
+  background: #ffffff;
+  padding: 16px 22px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.navTitle {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.pageContent {
+  padding: 25px;
+}
+
+/* Page titles */
+
+.pageTitle {
+  font-size: 26px;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+}
+
+/* Cards grid (deals, blogs, etc.) */
+
+.gridCards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.card {
+  background: #ffffff;
+  padding: 18px 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.08);
+}
+
+.card h3 {
+  margin: 0 0 10px 0;
+  font-size: 18px;
+}
+
+.card p {
+  margin: 0 0 10px 0;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+/* Buttons & inputs */
+
+.primaryBtn {
+  display: inline-block;
+  padding: 9px 16px;
+  background: #2563eb;
+  color: #ffffff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.primaryBtn:hover {
+  background: #1d4ed8;
+}
+
+.inputCard,
+.outputCard {
+  background: #ffffff;
+  padding: 18px 20px;
+  border-radius: 10px;
+  box-shadow: 0 1px 6px rgba(15, 23, 42, 0.08);
+  margin-bottom: 16px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  resize: vertical;
+}
+
+/* Settings grid */
+
+.settingsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px;
+}
+
+.settingsItem {
+  background: #ffffff;
+  padding: 14px 16px;
+  border-radius: 8px;
+  box-shadow: 0 1px 5px rgba(15, 23, 42, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.settingsItem strong {
+  font-size: 14px;
+}
+
+.settingsItem span {
+  font-size: 13px;
+  color: #4b5563;
+}
+
+/* Stats cards */
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.statCard {
+  background: #ffffff;
+  padding: 16px 18px;
+  border-radius: 10px;
+  box-shadow: 0 1px 6px rgba(15, 23, 42, 0.08);
+}
+
+.statCard h3 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+}
+
+.statCard p {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Output blocks */
+
+.outputCard {
+  white-space: pre-wrap;
+  font-size: 14px;
+  color: #1f2933;
+}
