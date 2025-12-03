@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import fs from 'fs'
-import AdStack from '@/components/AdStack'
+import AdStack from '../components/AdStack'
 
 export default function Post({ params }: { params: { slug: string } }) {
   try {

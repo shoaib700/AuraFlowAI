@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import AdStack from '@/components/AdStack'
+import AdStack from '../components/AdStack'
 
 export default function Home() {
   return (
