@@ -2,7 +2,10 @@ const fs = require('fs')
 const { OpenAI } = require('openai')
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY })
-const keywords = JSON.parse(fs.readFileSync('scripts/keywords.json', 'utf8'))
+const keywords = [
+  "best budget microphone 2025", "start podcast free", "cheap 4k webcam",
+  "wireless gaming mouse", "build pc under $500", "mechanical keyboards"
+]
 
 async function generatePost(keyword) {
   try {
@@ -20,10 +23,10 @@ date: "${new Date().toISOString()}"
 ${completion.choices[0].message.content}`
     
     fs.writeFileSync(`posts/${slug}.md`, frontmatter)
-    console.log(`✅ GENERATED: ${slug}.md`)
+    console.log(` GENERATED: ${slug}.md`)
   } catch (err) {
-    console.error(`❌ FAILED: ${keyword}`, err.message)
+    console.error(` FAILED: ${keyword}`, err.message)
   }
 }
 
-keywords.slice(0, 3).forEach(generatePost) // Generate first 3 posts
+keywords.forEach(generatePost)

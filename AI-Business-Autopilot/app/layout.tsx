@@ -9,7 +9,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
-        {/* FORCE ADSENSE TO APPEAR IN SOURCE */}
+        {/* ADSENSE AUTO ADS SCRIPT - WILL APPEAR IN SOURCE */}
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2203546185229559" crossOrigin="anonymous"></script>
         <script dangerouslySetInnerHTML={{
           __html: `(adsbygoogle = window.adsbygoogle || []).push({

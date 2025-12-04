@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import AdStack from '../components/AdStack'
 
 export default function Home() {
   return (
@@ -7,22 +6,25 @@ export default function Home() {
       <h1 className="text-5xl font-bold mb-8">AI Business Autopilot</h1>
       <p className="text-xl mb-8">24/7 automated content & monetization</p>
       
-      {/* ADS ON HOMEPAGE */}
-      <AdStack type="header" />
+      {/* ADS GO HERE */}
+      <div className="ad-stack my-8 p-4 border rounded bg-gray-50">
+        <ins className="adsbygoogle block"
+             data-ad-client="ca-pub-2203546185229559"
+             data-ad-slot="1234567890"
+             data-ad-format="auto"
+             data-full-width-responsive="true"></ins>
+      </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
         <Link href="/posts" className="border rounded-lg p-6 hover:bg-gray-100">
-          <h2 className="text-2xl font-semibold">📰 Blog Posts</h2>
+          <h2 className="text-2xl font-semibold"> Blog Posts</h2>
           <p>AI-generated articles</p>
         </Link>
         <Link href="/dashboard" className="border rounded-lg p-6 hover:bg-gray-100">
-          <h2 className="text-2xl font-semibold">📊 Dashboard</h2>
+          <h2 className="text-2xl font-semibold"> Dashboard</h2>
           <p>Live revenue stats</p>
         </Link>
       </div>
-      
-      {/* IN-ARTICLE ADS */}
-      <AdStack type="inArticle" />
     </main>
   )
 }
